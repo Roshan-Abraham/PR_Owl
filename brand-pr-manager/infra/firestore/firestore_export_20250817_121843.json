@@ -1,0 +1,545 @@
+{
+  "metadata": {
+    "exported_at": "2025-08-17T12:18:03.889685",
+    "collections": {
+      "Company": { "document_count": 1, "has_schema": true }
+    }
+  },
+  "data": {
+    "Company": {
+      "documents": {
+        "ampe3BGqmrwQblBbkHz0": {
+          "data": {
+            "company_description": "fake company services",
+            "company_name": "FakeHub",
+            "total_crisis": 3,
+            "active_crisis": [{ "mid": 1, "low": 0, "critical": 2 }]
+          },
+          "subcollections": {
+            "Dashboards": {
+              "documents": {
+                "ampe3BGqmrwQblBbkHz0": {
+                  "data": {
+                    "summary": {
+                      "num_crises_total": 3,
+                      "num_active": 1,
+                      "num_critical": 2,
+                      "num_resolved_24h": 0,
+                      "avg_resolution_time_hours": 0
+                    },
+                    "trend_data": {
+                      "severity_trend_7d": [],
+                      "volume_trend_7d": []
+                    },
+                    "last_updated": "2025-08-17T12:18:03.889685",
+                    "alert_thresholds": {},
+                    "sharded_counters": {
+                      "meta": { "shard_count": 4, "total": 3 },
+                      "shards": {
+                        "shard_0": { "count": 1 },
+                        "shard_1": { "count": 1 },
+                        "shard_2": { "count": 1 },
+                        "shard_3": { "count": 0 }
+                      }
+                    }
+                  },
+                  "subcollections": {
+                    "Views": {
+                      "documents": {
+                        "team_pr_dashboard": {
+                          "data": {
+                            "owner": "ops@fakehub.com",
+                            "filters": { "severity_min": 0.5 },
+                            "last_run": "2025-08-17T12:00:00+00:00"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "owner": "str",
+                        "filters": "Map",
+                        "last_run": "str"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "summary": {
+                  "num_crises_total": "int",
+                  "num_active": "int",
+                  "num_critical": "int",
+                  "num_resolved_24h": "int",
+                  "avg_resolution_time_hours": "int"
+                },
+                "trend_data": {
+                  "severity_trend_7d": "Array",
+                  "volume_trend_7d": "Array"
+                },
+                "last_updated": "str",
+                "alert_thresholds": "Map",
+                "sharded_counters": "Map"
+              }
+            },
+            "MediaCenter": {
+              "documents": {
+                "yokPyVk3LNPDVnKq9kCa": {
+                  "data": { "total_mentions": 23 },
+                  "subcollections": {
+                    "ResponseTemplates": {
+                      "documents": {
+                        "Iffv7PCwjRlhDQYhv95U": {
+                          "data": {
+                            "checklist": ["step 1", "step 2"],
+                            "description": "",
+                            "use_case": "useful in which situations",
+                            "response_template_name": "",
+                            "status": "Active",
+                            "tags": ["legal", "public post appology"]
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "checklist": "Array[str]",
+                        "description": "str",
+                        "use_case": "str",
+                        "response_template_name": "str",
+                        "status": "str",
+                        "tags": "Array[str]"
+                      }
+                    },
+                    "SentimentAnalysis": {
+                      "documents": {
+                        "q1xONCSVedmxP1tzU6LK": {
+                          "data": {
+                            "sentiment_category_breakdown": {
+                              "uncertain": "int",
+                              "mixed": "int",
+                              "neutral": "int",
+                              "negative": "int",
+                              "positive": "int"
+                            },
+                            "recorded_timestamp": "str",
+                            "total_followers": "int",
+                            "sentiment_score": "float"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "sentiment_category_breakdown": "Map",
+                        "recorded_timestamp": "str",
+                        "total_followers": "int",
+                        "sentiment_score": "float"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": { "total_mentions": "int" }
+            },
+            "Simulator": {
+              "documents": {
+                "kVmBue52KxDJ32mO7cgI": {
+                  "data": { "relation_impact": "str" },
+                  "subcollections": {
+                    "VectorMetadata": {
+                      "documents": {
+                        "case_study_1": {
+                          "data": {
+                            "object_id": "case_study_1",
+                            "milvus_collection": "case_studies",
+                            "vector_id": "vec_123",
+                            "source_type": "case_study",
+                            "source_id": "internal_doc_1",
+                            "tags": ["product_recall", "social_media"],
+                            "embeddings_model": "gemini-pro",
+                            "embedding_dim": 1536,
+                            "partition": "global",
+                            "embedding_checksum": "abc123",
+                            "version": "v1",
+                            "metadata": {
+                              "title": "Case Study 1",
+                              "summary": "Product recall case"
+                            },
+                            "usage_counters": {
+                              "retrieval_count": 0,
+                              "last_retrieved_at": null
+                            },
+                            "created_at": "2025-08-17T12:22:00.000000+00:00",
+                            "last_updated": "2025-08-17T12:22:00.000000+00:00"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "object_id": "str",
+                        "milvus_collection": "str",
+                        "vector_id": "str",
+                        "source_type": "str",
+                        "source_id": "str",
+                        "tags": "Array[str]",
+                        "embeddings_model": "str",
+                        "embedding_dim": "int",
+                        "partition": "str",
+                        "embedding_checksum": "str",
+                        "version": "str",
+                        "metadata": "Map",
+                        "usage_counters": "Map",
+                        "created_at": "str",
+                        "last_updated": "str"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": { "total_sims": "int", "readiness": "int" }
+            },
+            "Crises": {
+              "documents": {
+                "crisis_case_1": {
+                  "data": {
+                    "id": "crisis_case_1",
+                    "session_id": "ampe3BGqmrwQblBbkHz0:crisis_case_1",
+                    "created_at": "2025-08-17T09:30:42.567000+00:00",
+                    "updated_at": "2025-08-17T09:30:42.567000+00:00",
+                    "origin_point": {
+                      "type": "external",
+                      "source": "X",
+                      "metadata": {}
+                    },
+                    "nature": "social",
+                    "current_status": "created",
+                    "status_history": [
+                      {
+                        "status": "created",
+                        "by": "system",
+                        "timestamp": "2025-08-17T09:30:42.567000+00:00"
+                      }
+                    ],
+                    "primary_class": null,
+                    "severity_score": 0,
+                    "confidence_score": 0,
+                    "affected_stakeholders": [],
+                    "estimated_resolution_time_hours": null,
+                    "tags": ["social_media"],
+                    "priority": "P1",
+                    "resolution_owner": "pr_team@fakehub.com",
+                    "latest_recommendation_summary": "Initial containment recommended: official statement + hotline",
+                    "metrics": { "num_actions": 0, "num_mentions": 23 },
+                    "snapshot_id": null,
+                    "latest_scorecard_id": null,
+                    "latest_recommendation_id": null,
+                    "summary": "Initial crisis event from Social Media.",
+                    "pointers": {
+                      "affected_relations_collection": "AffectedRelations",
+                      "projected_events_collection": "ProjectedEvents",
+                      "response_templates_collection": "ResponseTemplates",
+                      "primary_response_template_id": null
+                    },
+                    "relations_summary": { "num_partners_impacted": 0, "top_affected": [] }
+                  },
+                  "subcollections": {
+                    "Artifacts": {
+                      "documents": {
+                        "snapshot_1": {
+                          "data": {
+                            "artifact_id": "snapshot_1",
+                            "artifact_type": "snapshot",
+                            "created_at": "2025-08-17T09:31:00+00:00",
+                            "created_by": "ContextCollector",
+                            "payload": {
+                              "company_profile": { "brand_awareness": 1 },
+                              "events": []
+                            },
+                            "confidence": 0.75
+                          },
+                          "subcollections": {}
+                        },
+                        "scorecard_1": {
+                          "data": {
+                            "artifact_id": "scorecard_1",
+                            "artifact_type": "scorecard",
+                            "generated_at": "2025-08-17T09:32:00+00:00",
+                            "generated_by": "SeverityAssessmentAgent",
+                            "scores": { "severity": 0.6, "impact": 0.4 },
+                            "model_version": "v1"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "artifact_id": "str",
+                        "artifact_type": "str",
+                        "created_at": "str",
+                        "created_by": "str",
+                        "payload": "Map",
+                        "confidence": "float",
+                        "generated_at": "str",
+                        "generated_by": "str",
+                        "scores": "Map",
+                        "model_version": "str"
+                      }
+                    },
+                    "AffectedRelations": {
+                      "documents": {
+                        "rel_1": {
+                          "data": {
+                            "relation_id": "partner_acme",
+                            "name": "ACME Partners",
+                            "impact_score": 0.6,
+                            "relationship_type": "partner",
+                            "notes": "High engagement partner likely to propagate social post",
+                            "suggested_actions": ["notify_partner", "joint_statement"]
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "relation_id": "str",
+                        "name": "str",
+                        "impact_score": "float",
+                        "relationship_type": "str",
+                        "notes": "str",
+                        "suggested_actions": "Array[str]"
+                      }
+                    },
+                    "ProjectedEvents": {
+                      "documents": {
+                        "event_1": {
+                          "data": {
+                            "event_id": "event_followup_1",
+                            "expected_time": "2025-08-18T10:00:00+00:00",
+                            "description": "Potential media pickup from influencer repost",
+                            "likelihood": 0.7,
+                            "mitigation_recommendation": "escalate_monitoring;prepare_hotline"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "event_id": "str",
+                        "expected_time": "str",
+                        "description": "str",
+                        "likelihood": "float",
+                        "mitigation_recommendation": "str"
+                      }
+                    },
+                    "ResponseTemplates": {
+                      "documents": {
+                        "template_1": {
+                          "data": {
+                            "template_id": "template_1",
+                            "title": "Initial Containment Statement",
+                            "body": "We take this matter seriously. We are investigating and will update soon.",
+                            "channels": ["twitter", "press_release", "customer_support"],
+                            "owner": "pr_team@fakehub.com",
+                            "status": "Active"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "template_id": "str",
+                        "title": "str",
+                        "body": "str",
+                        "channels": "Array[str]",
+                        "owner": "str",
+                        "status": "str"
+                      }
+                    },
+                    "Logs": {
+                      "documents": {
+                        "log_1": {
+                          "data": {
+                            "author": "agent/ContextCollector",
+                            "action": "snapshot_created",
+                            "payload": {},
+                            "timestamp": "2025-08-17T09:31:05+00:00"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "author": "str",
+                        "action": "str",
+                        "payload": "Map",
+                        "timestamp": "str"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "id": "str",
+                "session_id": "str",
+                "created_at": "str",
+                "updated_at": "str",
+                "origin_point": "Map",
+                "nature": "str",
+                "current_status": "str",
+                "status_history": "Array[{'status':'str','by':'str','timestamp':'str'}]",
+                "primary_class": "str",
+                "severity_score": "float",
+                "confidence_score": "float",
+                "affected_stakeholders": "Array[str]",
+                "estimated_resolution_time_hours": "int",
+                "tags": "Array[str]",
+                "priority": "str",
+                "resolution_owner": "str",
+                "latest_recommendation_summary": "str",
+                "metrics": "Map",
+                "snapshot_id": "str",
+                "latest_scorecard_id": "str",
+                "latest_recommendation_id": "str",
+                "summary": "str"
+              }
+            },
+            "AgentRuns": {
+              "documents": {
+                "run_1": {
+                  "data": {
+                    "run_id": "run_1",
+                    "crisis_case_id": "crisis_case_1",
+                    "agent_type": "ContextCollector",
+                    "kind": "workflow",
+                    "sub_agents_involved": [],
+                    "start_timestamp": "2025-08-17T12:20:00.000000+00:00",
+                    "end_timestamp": null,
+                    "status": "running",
+                    "inputs": { "crisis_case_id": "crisis_case_1" },
+                    "outputs_summary": "snapshot created",
+                    "model": { "name": "gemini-pro", "version": "v1" },
+                    "tokens": { "prompt_tokens": 0, "completion_tokens": 0 },
+                    "costs": { "usd_estimate": 0.0 },
+                    "tool_invocations": [],
+                    "error_trace": null,
+                    "performance_metrics": {
+                      "execution_time_ms": 0,
+                      "memory_used": 0,
+                      "tokens_consumed": 0
+                    }
+                  },
+                  "subcollections": {
+                    "Artifacts": {
+                      "documents": {
+                        "artifact_1": {
+                          "data": {
+                            "type": "json",
+                            "content_summary": "snapshot metadata",
+                            "gcs_uri": null
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "type": "str",
+                        "content_summary": "str",
+                        "gcs_uri": "str"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "run_id": "str",
+                "crisis_case_id": "str",
+                "agent_type": "str",
+                "kind": "str",
+                "sub_agents_involved": "Array[str]",
+                "start_timestamp": "str",
+                "end_timestamp": "str",
+                "status": "str",
+                "inputs": "Map",
+                "outputs_summary": "str",
+                "model": "Map",
+                "tokens": "Map",
+                "costs": "Map",
+                "tool_invocations": "Array[Map]",
+                "error_trace": "str",
+                "performance_metrics": "Map"
+              }
+            },
+            "VectorMetadata": {
+              "documents": {
+                "case_study_1": {
+                  "data": {
+                    "object_id": "case_study_1",
+                    "milvus_collection": "case_studies",
+                    "vector_id": "vec_123",
+                    "source_type": "case_study",
+                    "source_id": "internal_doc_1",
+                    "tags": ["product_recall", "social_media"],
+                    "embeddings_model": "gemini-pro",
+                    "embedding_dim": 1536,
+                    "partition": "global",
+                    "embedding_checksum": "abc123",
+                    "version": "v1",
+                    "metadata": {
+                      "title": "Case Study 1",
+                      "summary": "Product recall case"
+                    },
+                    "usage_counters": {
+                      "retrieval_count": 0,
+                      "last_retrieved_at": null
+                    },
+                    "created_at": "2025-08-17T12:22:00.000000+00:00",
+                    "last_updated": "2025-08-17T12:22:00.000000+00:00"
+                  },
+                  "subcollections": {}
+                }
+              },
+              "schema": {
+                "object_id": "str",
+                "milvus_collection": "str",
+                "vector_id": "str",
+                "source_type": "str",
+                "source_id": "str",
+                "tags": "Array[str]",
+                "embeddings_model": "str",
+                "embedding_dim": "int",
+                "partition": "str",
+                "embedding_checksum": "str",
+                "version": "str",
+                "metadata": "Map",
+                "usage_counters": "Map",
+                "created_at": "str",
+                "last_updated": "str"
+              }
+            },
+            "Attachments": {
+              "documents": {
+                "attach_1": {
+                  "data": {
+                    "filename": "screenshot.png",
+                    "mime_type": "image/png",
+                    "gcs_uri": "gs://fakehub-bucket/screenshot.png",
+                    "size_bytes": 12345,
+                    "uploaded_by": "user:ops@fakehub.com",
+                    "uploaded_at": "2025-08-17T09:31:10+00:00"
+                  },
+                  "subcollections": {}
+                }
+              },
+              "schema": {
+                "filename": "str",
+                "mime_type": "str",
+                "gcs_uri": "str",
+                "size_bytes": "int",
+                "uploaded_by": "str",
+                "uploaded_at": "str"
+              }
+            }
+          }
+        }
+      },
+      "schema": {
+        "company_description": "str",
+        "company_name": "str",
+        "total_crisis": "int",
+        "active_crisis": "Array[{'mid': 'int', 'low': 'int', 'critical': 'int'}]"
+      }
+    }
+  }
+}

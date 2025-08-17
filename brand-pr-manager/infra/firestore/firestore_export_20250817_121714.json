@@ -1,0 +1,335 @@
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+    "collections": {
+      "Company": {
+        "document_count": 1,
+        "has_schema": true
+      },
+      "dashboards": {
+        "document_count": 0,
+        "has_schema": false
+      }
+    }
+  },
+  "data": {
+    "Company": {
+      "documents": {
+        "ampe3BGqmrwQblBbkHz0": {
+          "data": {
+            "total_crisis": 3,
+            "active_crisis": [
+              {
+                "mid": 1,
+                "critical": 2,
+                "low": 0
+              }
+            ],
+            "company_name": "FakeHub",
+            "company_description": "fake company services"
+          },
+          "subcollections": {
+            "AIInsights": {
+              "documents": {
+                "qVZC2i9HH9JnIXO3NR0e": {
+                  "data": {
+                    "response_time": 12,
+                    "active_threats": 3,
+                    "risk_score": 5.5,
+                    "ai_confidence": 56
+                  },
+                  "subcollections": {
+                    "RiskMatrix": {
+                      "documents": {
+                        "byVldfSWVMCrOH4JHfdf": {
+                          "data": {
+                            "graphs": {
+                              "tmp_values": ""
+                            }
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "graphs": {
+                          "tmp_values": "str"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "response_time": "int",
+                "active_threats": "int",
+                "risk_score": "float",
+                "ai_confidence": "int"
+              }
+            },
+            "CompanyProfile": {
+              "documents": {
+                "DMPyAVFMDRyp0ZRWDILO": {
+                  "data": {
+                    "company_mission": "FakeHub company aim",
+                    "company_vision": "FakeHub Vision statement",
+                    "brand_voice": "concise, transparent, empathetic",
+                    "ethics": ["privacy_first", "no_deceptive_practices", "transparent_reporting"],
+                    "global_presence": [
+                      {
+                        "Country": "North America",
+                        "regions": ["US", "Canada"]
+                      }
+                    ],
+                    "company_metrics": {
+                      "customer_satisfaction": 1,
+                      "brand_awareness": 1
+                    },
+                    "founded_year": 2015,
+                    "headquarters": "San Francisco, CA",
+                    "contacts_summary": {
+                      "pr_contact": "pr_team@fakehub.com",
+                      "security_contact": "sec@fakehub.com",
+                      "legal_contact": "legal@fakehub.com"
+                    }
+                  },
+                  "subcollections": {
+                    "Events": {
+                      "documents": {
+                        "DNV3eS1Iav4HkakzuLgx": {
+                          "data": {
+                            "event_name": "collab sess",
+                            "event_id": "event_collab_1",
+                            "status": "planned",
+                            "risk_factors": [
+                              "competitors presence",
+                              "high media attention"
+                            ],
+                            "demographic_impacts": {
+                              "geographic_focus": "North America",
+                              "secondary_audience": "grad students",
+                              "industry_focus": [
+                                "SaaS",
+                                "GenZ"
+                              ],
+                              "primary_audience": "teens"
+                            },
+                            "progress": 78,
+                            "event_timestamp": "2025-08-16T17:13:41.258000+00:00",
+                            "event_tags": [
+                              "product launch",
+                              "media coverage"
+                            ],
+                            "owner": "events@fakehub.com",
+                            "expected_attendance": 250
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "event_name": "str",
+                        "event_id": "str",
+                        "status": "str",
+                        "risk_factors": "Array[str]",
+                        "demographic_impacts": {
+                          "geographic_focus": "str",
+                          "secondary_audience": "str",
+                          "industry_focus": "Array[str]",
+                          "primary_audience": "str"
+                        },
+                        "progress": "int",
+                        "event_timestamp": "str",
+                        "event_tags": "Array[str]",
+                        "owner": "str",
+                        "expected_attendance": "int"
+                      }
+                    },
+                    "Partners": {
+                      "documents": {
+                        "aHrPzX5h5AngwNbYz8qE": {
+                          "data": {
+                            "partner_id": "partner_cokecola",
+                            "relation_start_timestamp": "2021-06-16T17:25:19.325000+00:00",
+                            "revenue_amount": 430000,
+                            "relation_tags": [
+                              "branding",
+                              "audience_turnover"
+                            ],
+                            "relation_type": "strategic",
+                            "partner_name": "CokeCola",
+                            "primary_contact": {
+                              "name": "Jane Doe",
+                              "email": "jane.doe@cokecola.com",
+                              "phone": "+1-415-555-0101"
+                            },
+                            "agreement_status": "active",
+                            "notes": "High engagement partner likely to propagate social post"
+                          },
+                          "subcollections": {
+                            "Agreements": {
+                              "documents": {
+                                "agr_1": {
+                                  "data": {
+                                    "agreement_id": "agr_1",
+                                    "signed_at": "2021-06-01T00:00:00+00:00",
+                                    "terms_summary": "Co-marketing and content sharing",
+                                    "renewal_date": "2024-06-01T00:00:00+00:00"
+                                  },
+                                  "subcollections": {}
+                                }
+                              },
+                              "schema": {
+                                "agreement_id": "str",
+                                "signed_at": "str",
+                                "terms_summary": "str",
+                                "renewal_date": "str"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "schema": {
+                        "partner_id": "str",
+                        "relation_start_timestamp": "str",
+                        "revenue_amount": "int",
+                        "relation_tags": "Array[str]",
+                        "relation_type": "str",
+                        "partner_name": "str",
+                        "primary_contact": "Map",
+                        "agreement_status": "str",
+                        "notes": "str"
+                      }
+                    },
+                    "Relations": {
+                      "documents": {
+                        "rel_map_1": {
+                          "data": {
+                            "relation_id": "partner_cokecola",
+                            "type": "partner",
+                            "strength_score": 0.85,
+                            "last_interaction_at": "2025-07-10T12:00:00+00:00"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "relation_id": "str",
+                        "type": "str",
+                        "strength_score": "float",
+                        "last_interaction_at": "str"
+                      }
+                    },
+                    "ResponseTemplates": {
+                      "documents": {
+                        "tpl_pr_1": {
+                          "data": {
+                            "template_id": "tpl_pr_1",
+                            "title": "Public Apology Template",
+                            "body": "We apologize for...",
+                            "channels": ["twitter","press_release"],
+                            "owner": "pr_team@fakehub.com",
+                            "status": "Active",
+                            "tags": ["legal","apology"]
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "template_id": "str",
+                        "title": "str",
+                        "body": "str",
+                        "channels": "Array[str]",
+                        "owner": "str",
+                        "status": "str",
+                        "tags": "Array[str]"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "company_mission": "str",
+                "company_vision": "str",
+                "brand_voice": "str",
+                "ethics": "Array[str]",
+                "global_presence": "Array[{'Country': 'str','regions':'Array[str]'}]",
+                "company_metrics": {
+                  "customer_satisfaction": "int",
+                  "brand_awareness": "int"
+                },
+                "founded_year": "int",
+                "headquarters": "str",
+                "contacts_summary": "Map"
+              }
+            },
+            "CrisisBoard": {
+              "documents": {
+                "ab4pZiGtFTBem6Xd3QIY": {
+                  "data": {
+                    "total_crisis": 3,
+                    "active_crisis": [
+                      {
+                        "medium": 1,
+                        "critical": 2,
+                        "low": 0
+                      }
+                    ],
+                    "crisis_event_name": "",
+                    "sources": [
+                      "youtube",
+                      "X"
+                    ],
+                    "occurance_timestamp": "2025-08-17T09:30:42.567000+00:00",
+                    "crisis_description": ""
+                  },
+                  "subcollections": {
+                    "AffectedEvents": {
+                      "documents": {
+                        "aZmBoFTbhN722cyIAZYw": {
+                          "data": {
+                            "event_ref": "Company/ampe3BGqmrwQblBbkHz0/CompanyProfile/DMPyAVFMDRyp0ZRWDILO/Events/DNV3eS1Iav4HkakzuLgx",
+                            "impact_description": "Event likely to amplify mentions",
+                            "first_seen": "2025-08-16T17:13:41.258000+00:00"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "event_ref": "str",
+                        "impact_description": "str",
+                        "first_seen": "str"
+                      }
+                    },
+                    "AffectedRelations": {
+                      "documents": {
+                        "rel_1": {
+                          "data": {
+                            "partner_ref": "Company/ampe3BGqmrwQblBbkHz0/CompanyProfile/DMPyAVFMDRyp0ZRWDILO/Partners/aHrPzX5h5AngwNbYz8qE",
+                            "impact_score": 0.6,
+                            "notes": "Partner may reshare content"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "partner_ref": "str",
+                        "impact_score": "float",
+                        "notes": "str"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "total_crisis": "int",
+                "active_crisis": "Array[Map]",
+                "crisis_event_name": "str",
+                "sources": "Array[str]",
+                "occurance_timestamp": "str",
+                "crisis_description": "str"
+              }
+            },

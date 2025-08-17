@@ -62,23 +62,16 @@ Docs:
 
 ## FastAPI endpoints (suggested)
 
-Prefer company-scoped endpoints so all reads/writes are scoped to a Company's subcollections. Example recommended routes:
-
-- POST /companies/{company_id}/simulate
-  - Creates a CrisisCase under Company/{company_id}/Crises/{crisis_case_id} and optionally receives template id and simulation inputs; returns crisis_case_id
-- GET /companies/{company_id}/crises/{crisis_case_id}/snapshot
-  - Returns the latest CrisisSnapshot (stored as an Artifact) for the given crisis
-- GET /companies/{company_id}/crises/{crisis_case_id}
-  - Full crisis case document with pointers to latest Artifacts (snapshot, scorecard, recommendation)
-- POST /companies/{company_id}/crises/{crisis_case_id}/classify (optional manual trigger)
-- POST /companies/{company_id}/crises/{crisis_case_id}/recommend (optional manual trigger)
-- GET /companies/{company_id}/crises (list/filter by status/severity)
-- CRUD endpoints for company profiles, events, templates, and vector DB ingestion (all under Company/{company_id} scope)
-
-Notes:
-
-- All agent tools and server-side writes should include the `company_id` parameter to validate scope and to avoid storing redundant `company_id` fields on documents that live under Company/{company_id} (the parent path provides the tenancy context).
-- Agent implementations should use Pydantic v2 `model_dump()` when persisting models to Firestore.
+- POST /simulate
+  - Creates CrisisCase, optionally receives template id and simulation inputs
+  - Returns crisis_case_id
+- GET /crisis/{crisis_case_id}/snapshot
+  - Returns the latest CrisisSnapshot document
+- GET /crisis/{crisis_case_id}
+  - Full crisis case document with scorecard and recommendations
+- POST /crisis/{crisis_case_id}/classify (optional manual trigger)
+- POST /crisis/{crisis_case_id}/recommend (optional manual trigger)
+- CRUD endpoints for company profiles, events, templates, and vector DB ingestion
 
 ## Enhanced Agent Architecture with DB Sub-agents
 
@@ -288,40 +281,54 @@ All sub-agent outputs must be persisted to Firestore with proper session scoping
 
 ## Enhanced Firestore Schema with Complete Data Model
 
-Top-level collections are now explicitly company-scoped in the canonical layout. The primary change is that crisis-centric data is a subcollection under a Company document and historical/large payloads are consolidated into an `Artifacts` subcollection (this merges the prior separate `snapshots` and `scorecards` collections into one typed place):
+**Top-level collections (multitenant-aware):**
 
-- Company root: `Company/{company_id}`
+- **companies/{company_id}**
 
-  - keep company profile, settings, and light-weight dashboard/summary docs here (top-level per-company document + subcollections)
+  - document fields: `{id: company_id, name, timezone, industry, brand_voice, created_at, settings: {notification_preferences, escalation_thresholds, ai_model_preferences}, metadata: {subscription_tier, feature_flags}}`
+  - subcollections:
+    - **dashboard** -> `summary` document `{ company_id, num_active_crises, num_critical, num_resolved_24h, avg_resolution_time_hours, last_updated, trend_data: {severity_trend, volume_trend} }`
+    - **details** -> `profile` document `{ mission, values: [str], ethics: [str], bio, contacts: [{name, role, email, phone}], key_stakeholders: [{name, influence_score, contact_method}] }`
+    - **events** -> event documents `{ event_id, title, description, tags:[], demographics: {audience_size, key_groups}, start_time, end_time, impact_estimate, stakeholder_involvement, media_coverage_expected }`
+    - **relations** -> relation documents `{ relation_id, name, type: "customer|partner|investor|regulator|media", importance_score: 0-1, contact_info, communication_history, sentiment_history }`
+    - **templates** -> crisis simulation templates `{ template_id, name, scenario_type, complexity_level, learning_objectives, default_parameters, estimated_duration }`
+    - **knowledge_base** -> company-specific case studies `{ kb_id, title, category, lessons_learned, outcome_summary, vector_ids: [str], tags }`
 
-- Company-scoped crises: `Company/{company_id}/Crises/{crisis_case_id}`
+- **Company/{company_id}/Crises/{crisis_case_id}**
 
-  - fields (hot, summary metadata; avoid embedding large blobs):
-    - id: crisis_case_id
-    - session_id: "{company_id}:{crisis_id}"
-    - created_at, updated_at
-    - origin_point: {type, source, metadata}
-    - nature, current_status, primary_class
-    - severity_score, confidence_score
-    - affected_stakeholders, estimated_resolution_time_hours
-    - latest_snapshot_id (points to an Artifact id), latest_scorecard_id, latest_recommendation_id
-    - summary (small string for dashboards)
-  - note: do not store `company_id` on documents under `Company/{company_id}` — tenancy is implied by the parent path.
+  - fields: `{
+  id: crisis_case_id,
+  session_id: "{company_id}:{crisis_id}",
+  created_at,
+  updated_at,
+  origin_point: {type: "simulation|real|external", source: "template_id|news_url|social_post_id", metadata: {}},
+  nature: "product_defect|regulatory|social|financial|operational|legal",
+  current_status: "created|context_collected|classified|recommendation_generated|action_planned|resolved|archived",
+  primary_class,
+  severity_score: 0-1,
+  confidence_score: 0-1,
+  affected_stakeholders: [str],
+  estimated_resolution_time_hours,
+  latest_snapshot_id,  # points to an Artifact id
+  latest_scorecard_id, # points to an Artifact id
+  latest_recommendation_id, # points to an Artifact id
+  summary: "brief_description_for_dashboard"
+  }`
+  - subcollections:
+    - **Artifacts/{artifact_id}** -> `{ artifact_id, artifact_type: "snapshot|scorecard|recommendation|other", created_at, origin_metadata, payload: {...} }`
+    - **logs/{log_id}** -> `{ log_id, timestamp, agent_id, sub_agent_id, action, input_data, output_data, execution_time_ms, status, error_details }`
+    - **agent_sessions/{session_id}** -> `{ session_id, created_at, agent_coordination_state, memory_bank_references, current_step, completed_steps }`
 
-  - subcollections (under each Crises document):
-    - `Artifacts/{artifact_id}`: canonical place for large or historical payloads and multi-type artifacts. Artifact document shape includes a discriminator `artifact_type` (one of `snapshot|scorecard|recommendation|other`), `created_at`, `origin_metadata`, and a `payload` field. Examples:
-      - snapshots: artifact_type="snapshot"; payload contains the CrisisSnapshot structure
-      - scorecards: artifact_type="scorecard"; payload contains metrics and sub-agent outputs
-      - recommendations: artifact_type="recommendation"; payload contains steps and plan
-    - `logs/{log_id}`: immutable audit entries `{ log_id, timestamp, agent_id, action, input_data, output_data, status, execution_time_ms }`
-    - `agent_sessions/{session_id}`: session lifecycle traces and memory references
+- **agent_runs/{run_id}** (global agent execution tracking)
 
-- Global/auxiliary collections:
-  - `agent_runs/{run_id}` (global agent execution tracking, contains company_id and crisis pointers)
-  - `vector_metadata/{namespace}/objects/{object_id}` (Milvus metadata sync; include company_id if vectors are company-scoped)
-  - `dashboards/{company_id}`: fast-read summary per company (single doc or small set of docs)
+  - fields: `{ run_id, company_id, crisis_case_id, agent_type, sub_agents_involved: [str], start_timestamp, end_timestamp, status, error_details, performance_metrics: {execution_time_ms, memory_used, tokens_consumed} }`
 
-Migration note: existing `snapshots/{id}` and `scorecards/{id}` documents should be migrated into `Artifacts` preserving original timestamps and linking original IDs (for audit). A migration script is recommended (see Next steps).
+- **vector_metadata/{collection_name}/objects/{object_id}** (Milvus metadata sync)
+
+  - fields: `{ object_id, milvus_collection, vector_id, source_type: "case_study|company_knowledge|external", source_id, company_id, tags, embeddings_model, created_at, last_updated }`
+
+- **dashboards/{company_id}** (top-level for fast access)
+  - fields: `{ company_id, summary: {num_crises_total, num_active, num_critical, num_resolved_24h, avg_resolution_time_hours}, trend_data: {severity_trend_7d, volume_trend_7d}, last_updated, alert_thresholds }`
 
 Production-ready additions and recommendations
 
@@ -747,13 +754,11 @@ async def create_crisis_with_session(company_id: str, payload: Dict, session: Cr
     # Add session metadata
     payload.update({
         'id': crisis_id,
-        'company_id': company_id,
         'session_id': session.session_id,
         'created_by_agent': True,
         'created_at': firestore.SERVER_TIMESTAMP
     })
 
-    # Persist under company-scoped Crises path
     await tool.write_document(f"Company/{company_id}/Crises/{crisis_id}", crisis_id, payload, company_id)
     return crisis_id
 
@@ -769,13 +774,7 @@ async def add_snapshot_with_session(crisis_case_id: str, snapshot: Dict, session
         'created_at': firestore.SERVER_TIMESTAMP
     })
 
-    # Persist as an Artifact under the company-scoped crisis
-    await tool.write_document(
-        f"Company/{session.company_id}/Crises/{crisis_case_id}/Artifacts/{snapshot_id}",
-        snapshot_id,
-        {"artifact_type": "snapshot", "created_at": firestore.SERVER_TIMESTAMP, "payload": snapshot},
-        session.company_id
-    )
+    await tool.write_document(f"Company/{session.company_id}/Crises/{crisis_case_id}/Artifacts/{snapshot_id}", snapshot_id, {"artifact_type": "snapshot", "created_at": firestore.SERVER_TIMESTAMP, "payload": snapshot}, session.company_id)
     return snapshot_id
 
 async def write_scorecard_with_session(crisis_case_id: str, scorecard: Dict, session: CrisisSession) -> str:

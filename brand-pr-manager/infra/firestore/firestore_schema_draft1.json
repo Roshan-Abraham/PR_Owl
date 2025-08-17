@@ -1,0 +1,570 @@
+{
+  "metadata": {
+    "exported_at": "2025-08-17T12:18:03.889685",
+    "collections": {
+      "Company": {
+        "document_count": 1,
+        "has_schema": true
+      }
+    }
+  },
+  "data": {
+    "Company": {
+      "documents": {
+        "ampe3BGqmrwQblBbkHz0": {
+          "data": {
+            "company_description": "fake company services",
+            "company_name": "FakeHub",
+            "total_crisis": 3,
+            "active_crisis": [
+              {
+                "mid": 1,
+                "low": 0,
+                "critical": 2
+              }
+            ]
+          },
+          "subcollections": {
+            "AIInsights": {
+              "documents": {
+                "qVZC2i9HH9JnIXO3NR0e": {
+                  "data": {
+                    "response_time": 12,
+                    "active_threats": 3,
+                    "ai_confidence": 56,
+                    "risk_score": 5.5
+                  },
+                  "subcollections": {
+                    "RiskMatrix": {
+                      "documents": {
+                        "byVldfSWVMCrOH4JHfdf": {
+                          "data": {
+                            "graphs": "{\"tmp_values\": \"some_value\"}"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "graphs": {
+                          "tmp_values": "str"
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "response_time": "int",
+                "active_threats": "int",
+                "ai_confidence": "int",
+                "risk_score": "float"
+              }
+            },
+            "CompanyProfile": {
+              "documents": {
+                "DMPyAVFMDRyp0ZRWDILO": {
+                  "data": {
+                    "company_metrics": {
+                      "brand_awareness": 1,
+                      "customer_statisfaction": 1
+                    },
+                    "company_vision": "FaskeHub Vision statement",
+                    "company_mission": "FakeHub company aim",
+                    "global_presence": [
+                      {
+                        "Country": "North America"
+                      }
+                    ]
+                  },
+                  "subcollections": {
+                    "Events": {
+                      "documents": {
+                        "DNV3eS1Iav4HkakzuLgx": {
+                          "data": {
+                            "event_name": "collab sess",
+                            "event_tags": ["product launch", "media coverage"],
+                            "event_timestamp": "2025-08-16T17:13:41.258000+00:00",
+                            "demographic_impacts": {
+                              "secondary_audience": "grad students",
+                              "industry_focus": ["SaaS", "GenZ"],
+                              "geographic_focus": "North America",
+                              "primary_audience": "teens"
+                            },
+                            "progress": 78,
+                            "risk_factors": []
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "event_name": "str",
+                        "event_tags": "Array[str]",
+                        "event_timestamp": "str",
+                        "demographic_impacts": {
+                          "secondary_audience": "str",
+                          "industry_focus": "Array[str]",
+                          "geographic_focus": "str",
+                          "primary_audience": "str"
+                        },
+                        "progress": "int",
+                        "risk_factors": "Array[str]"
+                      }
+                    },
+                    "Partners": {
+                      "documents": {
+                        "aHrPzX5h5AngwNbYz8qE": {
+                          "data": {
+                            "revenue_amount": 430000,
+                            "partner_name": "cokecola",
+                            "relation_type": "strategic",
+                            "relation_start_timestamp": "2021-06-16T17:25:19.325000+00:00",
+                            "relation_tags": ["branding", "audience turnover"]
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "revenue_amount": "int",
+                        "partner_name": "str",
+                        "relation_type": "str",
+                        "relation_start_timestamp": "str",
+                        "relation_tags": "Array[str]"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "company_metrics": {
+                  "brand_awareness": "int",
+                  "customer_statisfaction": "int"
+                },
+                "company_vision": "str",
+                "company_mission": "str",
+                "global_presence": "Array[{'Country': 'str'}]"
+              }
+            },
+            "CrisisBoard": {
+              "documents": {
+                "ab4pZiGtFTBem6Xd3QIY": {
+                  "data": {
+                    "occurance_timestamp": "2025-08-17T09:30:42.567000+00:00",
+                    "crisis_description": "",
+                    "sources": ["youtube", "X"],
+                    "active_crisis": [
+                      {
+                        "low": 0,
+                        "critical": 2,
+                        "medium": 1
+                      }
+                    ],
+                    "total_crisis": 3,
+                    "crisis_event_name": ""
+                  },
+                  "subcollections": {
+                    "AffectedEvents": {
+                      "documents": {
+                        "aZmBoFTbhN722cyIAZYw": {
+                          "data": {
+                            "event_ref": "Company/ampe3BGqmrwQblBbkHz0/CompanyProfile/DMPyAVFMDRyp0ZRWDILO/Events/DNV3eS1Iav4HkakzuLgx"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "event_ref": "str"
+                      }
+                    },
+                    "AffectedRelations": {
+                      "documents": {
+                        "jKV2gMTVKZw63Ukme0MH": {
+                          "data": {
+                            "partner_ref": "Company/ampe3BGqmrwQblBbkHz0/CompanyProfile/DMPyAVFMDRyp0ZRWDILO/Partners/aHrPzX5h5AngwNbYz8qE"
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "partner_ref": "str"
+                      }
+                    },
+                    "RecommendedActions": {
+                      "documents": {
+                        "ZfD605Qb2xY3YVYXLtfI": {
+                          "data": {
+                            "event_reaction_timestamp": "2025-08-17T09:32:46.295000+00:00",
+                            "est_time": "",
+                            "assigned_to": "PR employe names",
+                            "actions_checklist": [
+                              {
+                                "action_despction": "",
+                                "staus": "",
+                                "action_name": "",
+                                "references": ""
+                              }
+                            ],
+                            "progress_status": 1
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "event_reaction_timestamp": "str",
+                        "est_time": "str",
+                        "assigned_to": "str",
+                        "actions_checklist": "Array[{'action_despction': 'str', 'staus': 'str', 'action_name': 'str', 'references': 'str'}]",
+                        "progress_status": "int"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "occurance_timestamp": "str",
+                "crisis_description": "str",
+                "sources": "Array[str]",
+                "active_crisis": "Array[{'low': 'int', 'critical': 'int', 'medium': 'int'}]",
+                "total_crisis": "int",
+                "crisis_event_name": "str"
+              }
+            },
+            "MediaCenter": {
+              "documents": {
+                "yokPyVk3LNPDVnKq9kCa": {
+                  "data": {
+                    "total_mentions": 23
+                  },
+                  "subcollections": {
+                    "ResponseTemplates": {
+                      "documents": {
+                        "Iffv7PCwjRlhDQYhv95U": {
+                          "data": {
+                            "checklist": ["step 1", "step 2"],
+                            "description": "",
+                            "use_case": "useful in which situations",
+                            "response_template_name": "",
+                            "status": "Active",
+                            "tags": ["legal", "public post appology"]
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "checklist": "Array[str]",
+                        "description": "str",
+                        "use_case": "str",
+                        "response_template_name": "str",
+                        "status": "str",
+                        "tags": "Array[str]"
+                      }
+                    },
+                    "SentimentAnalysis": {
+                      "documents": {
+                        "q1xONCSVedmxP1tzU6LK": {
+                          "data": {
+                            "media_status": "neutral",
+                            "social_platforms": ["instagram", "youtube"],
+                            "sentiment_impact_variable": {
+                              "sentiment_forecast": [
+                                {
+                                  "description": "a",
+                                  "sentiment_score": 4,
+                                  "forecast_name": "a",
+                                  "confidence_score": 4
+                                }
+                              ],
+                              "sentiment_tremds": {
+                                "product_quality": {
+                                  "value": ""
+                                },
+                                "Customer Service": {
+                                  "value": ""
+                                },
+                                "Pricing": {
+                                  "value": ""
+                                },
+                                "Sustainability": {
+                                  "value": ""
+                                }
+                              },
+                              "sentiment_category_breakdown": {
+                                "uncertain": 0,
+                                "mixed": 3,
+                                "neutral": 1,
+                                "negative": 7,
+                                "positive": 3
+                              }
+                            },
+                            "recorded_timestamp": "2025-08-17T08:45:53.532000+00:00",
+                            "total_followers": 40000,
+                            "sentiment_score": 4.8
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "media_status": "str",
+                        "social_platforms": "Array[str]",
+                        "sentiment_impact_variable": {
+                          "sentiment_forecast": "Array[{'description': 'str', 'sentiment_score': 'int', 'forecast_name': 'str', 'confidence_score': 'int'}]",
+                          "sentiment_tremds": {
+                            "product_quality": {
+                              "value": "str"
+                            },
+                            "Customer Service": {
+                              "value": "str"
+                            },
+                            "Pricing": {
+                              "value": "str"
+                            },
+                            "Sustainability": {
+                              "value": "str"
+                            }
+                          },
+                          "sentiment_category_breakdown": {
+                            "uncertain": "int",
+                            "mixed": "int",
+                            "neutral": "int",
+                            "negative": "int",
+                            "positive": "int"
+                          }
+                        },
+                        "recorded_timestamp": "str",
+                        "total_followers": "int",
+                        "sentiment_score": "float"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "total_mentions": "int"
+              }
+            },
+            "Simulator": {
+              "documents": {
+                "kVmBue52KxDJ32mO7cgI": {
+                  "data": {
+                    "total_sims": 2,
+                    "readiness": 21
+                  },
+                  "subcollections": {
+                    "History": {
+                      "documents": {
+                        "bpGqMXDtgd9JIchZekLl": {
+                          "data": {
+                            "sim_event_name": "nmae",
+                            "level": "Hard",
+                            "sim_description": "user given descrip[tion",
+                            "crisis_event_id": "Company/ampe3BGqmrwQblBbkHz0/CrisisBoard/ab4pZiGtFTBem6Xd3QIY",
+                            "learning_objectives": [
+                              "legal compliance",
+                              "fast response"
+                            ],
+                            "crisis_event": {
+                              "sector_focus": "which part of the company to manage",
+                              "detailed_description": "",
+                              "key_factors": {
+                                "time_sensitive": true,
+                                "media_involvement": "High",
+                                "relation_impact": "Medium"
+                              }
+                            },
+                            "score": 0
+                          },
+                          "subcollections": {}
+                        }
+                      },
+                      "schema": {
+                        "sim_event_name": "str",
+                        "level": "str",
+                        "sim_description": "str",
+                        "crisis_event_id": "str",
+                        "learning_objectives": "Array[str]",
+                        "crisis_event": {
+                          "sector_focus": "str",
+                          "detailed_description": "str",
+
+                          "key_factors": {
+                            "time_sensitive": "bool",
+                            "media_involvement": "str",
+                            "relation_impact": "str"
+                          }
+                        },
+                        "score": "int"
+                      }
+                    }
+                  }
+                }
+              },
+              "schema": {
+                "total_sims": "int",
+                "readiness": "int"
+              }
+            },
+            "Dashboards": {
+              "documents": {
+                "ampe3BGqmrwQblBbkHz0": {
+                  "data": {
+                    "company_id": "ampe3BGqmrwQblBbkHz0",
+                    "summary": {
+                      "num_crises_total": 3,
+                      "num_active": 1,
+                      "num_critical": 2,
+                      "num_resolved_24h": 0,
+                      "avg_resolution_time_hours": 0
+                    },
+                    "trend_data": {
+                      "severity_trend_7d": [],
+                      "volume_trend_7d": []
+                    },
+                    "last_updated": "2025-08-17T12:18:03.889685",
+                    "alert_thresholds": {}
+                  },
+                  "subcollections": {}
+                }
+              },
+              "schema": {
+                "company_id": "str",
+                "summary": {
+                  "num_crises_total": "int",
+                  "num_active": "int",
+                  "num_critical": "int",
+                  "num_resolved_24h": "int",
+                  "avg_resolution_time_hours": "int"
+                },
+                "trend_data": {
+                  "severity_trend_7d": "Array",
+                  "volume_trend_7d": "Array"
+                },
+                "last_updated": "str",
+                "alert_thresholds": "Map"
+              }
+            },
+            "Crises": {
+              "documents": {
+                "crisis_case_1": {
+                  "data": {
+                    "id": "crisis_case_1",
+                    "company_id": "ampe3BGqmrwQblBbkHz0",
+                    "session_id": "ampe3BGqmrwQblBbkHz0:crisis_case_1",
+                    "created_at": "2025-08-17T09:30:42.567000+00:00",
+                    "updated_at": "2025-08-17T09:30:42.567000+00:00",
+                    "origin_point": {
+                      "type": "external",
+                      "source": "X",
+                      "metadata": {}
+                    },
+                    "nature": "social",
+                    "current_status": "created",
+                    "primary_class": null,
+                    "severity_score": 0,
+                    "confidence_score": 0,
+                    "affected_stakeholders": [],
+                    "estimated_resolution_time_hours": null,
+                    "snapshot_id": null,
+                    "latest_scorecard_id": null,
+                    "latest_recommendation_id": null,
+                    "summary": "Initial crisis event from Social Media."
+                  },
+                  "subcollections": {}
+                }
+              },
+              "schema": {
+                "id": "str",
+                "company_id": "str",
+                "session_id": "str",
+                "created_at": "str",
+                "updated_at": "str",
+                "origin_point": "Map",
+                "nature": "str",
+                "current_status": "str",
+                "primary_class": "str",
+                "severity_score": "float",
+                "confidence_score": "float",
+                "affected_stakeholders": "Array[str]",
+                "estimated_resolution_time_hours": "int",
+                "snapshot_id": "str",
+                "latest_scorecard_id": "str",
+                "latest_recommendation_id": "str",
+                "summary": "str"
+              }
+            },
+            "AgentRuns": {
+              "documents": {
+                "run_1": {
+                  "data": {
+                    "run_id": "run_1",
+                    "company_id": "ampe3BGqmrwQblBbkHz0",
+                    "crisis_case_id": "crisis_case_1",
+                    "agent_type": "ContextCollector",
+                    "sub_agents_involved": [],
+                    "start_timestamp": "2025-08-17T12:20:00.000000+00:00",
+                    "end_timestamp": null,
+                    "status": "running",
+                    "error_details": null,
+                    "performance_metrics": {
+                      "execution_time_ms": 0,
+                      "memory_used": 0,
+                      "tokens_consumed": 0
+                    }
+                  },
+                  "subcollections": {}
+                }
+              },
+              "schema": {
+                "run_id": "str",
+                "company_id": "str",
+                "crisis_case_id": "str",
+                "agent_type": "str",
+                "sub_agents_involved": "Array[str]",
+                "start_timestamp": "str",
+                "end_timestamp": "str",
+                "status": "str",
+                "error_details": "str",
+                "performance_metrics": "Map"
+              }
+            },
+            "VectorMetadata": {
+              "documents": {
+                "case_study_1": {
+                  "data": {
+                    "object_id": "case_study_1",
+                    "milvus_collection": "case_studies",
+                    "vector_id": "vec_123",
+                    "source_type": "case_study",
+                    "source_id": "internal_doc_1",
+                    "company_id": "ampe3BGqmrwQblBbkHz0",
+                    "tags": ["product_recall", "social_media"],
+                    "embeddings_model": "gemini-pro",
+                    "created_at": "2025-08-17T12:22:00.000000+00:00",
+                    "last_updated": "2025-08-17T12:22:00.000000+00:00"
+                  },
+                  "subcollections": {}
+                }
+              },
+              "schema": {
+                "object_id": "str",
+                "milvus_collection": "str",
+                "vector_id": "str",
+                "source_type": "str",
+                "source_id": "str",
+                "company_id": "str",
+                "tags": "Array[str]",
+                "embeddings_model": "str",
+                "created_at": "str",
+                "last_updated": "str"
+              }
+            }
+          }
+        }
+      },
+      "schema": {
+        "company_description": "str",
+        "company_name": "str",
+        "total_crisis": "int",
+        "active_crisis": "Array[{'mid': 'int', 'low': 'int', 'critical': 'int'}]"
+      }
+    }
+  }
+}

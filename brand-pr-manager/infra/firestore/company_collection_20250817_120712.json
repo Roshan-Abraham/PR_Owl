@@ -1,0 +1,27 @@
+{
+  "metadata": {
+    "collection_name": "Company",
+    "exported_at": "2025-08-17T12:07:12.240910",
+    "document_count": 1
+  },
+  "schema": {
+    "active_crisis": "Array[dict]",
+    "company_name": "str",
+    "total_crisis": "int",
+    "company_description": "str"
+  },
+  "documents": {
+    "ampe3BGqmrwQblBbkHz0": {
+      "active_crisis": [
+        {
+          "mid": 1,
+          "critical": 2,
+          "low": 0
+        }
+      ],
+      "company_name": "FakeHub",
+      "total_crisis": 3,
+      "company_description": "fake company services"
+    }
+  }
+}
